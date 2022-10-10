@@ -1,0 +1,126 @@
+<div class="flex flex-col w-full">
+
+    <div class="flex w-full justify-end">
+        <button (click)="close()" mat-icon-button>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+
+
+    
+
+    <div class="flex flex-col"> 
+
+        <div class="mb-6 text-3xl font-bold text-primary">
+            <!-- <button *ngIf="forgetPassword" mat-icon-button class="mr-2" (click)="forgetPassword = false">
+                <mat-icon>arrow_back</mat-icon>
+            </button>  -->
+            {{forgetPassword  ? "Forget Password" : "Sign In"}} 
+        </div>
+
+        <fuse-alert
+        class="mb-4"
+        *ngIf="showAlert"
+        [appearance]="'outline'"
+        [showIcon]="false"
+        [type]="alert.type"
+        [@shake]="alert.type === 'error'">
+        {{alert.message}}
+    </fuse-alert>
+
+
+        <ng-container *ngIf="!forgetPassword">
+            <div>
+                <form   #signInNgForm="ngForm" [formGroup]="signInForm" >
+    
+                    <mat-form-field class="w-full">
+                        <mat-label>E-Mail</mat-label>
+                        <input matInput type="text" formControlName="email">
+                    </mat-form-field>
+    
+                    <mat-form-field class="w-full">
+                        <mat-label>Password</mat-label>
+                        <input
+                            id="password"
+                            matInput
+                            type="password"
+                            [formControlName]="'password'"
+                            #passwordField>
+                        <button
+                            mat-icon-button
+                            type="button"
+                            (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
+                            matSuffix>
+                            <mat-icon
+                                class="icon-size-5"
+                                *ngIf="passwordField.type === 'password'"
+                                [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                            <mat-icon
+                                class="icon-size-5"
+                                *ngIf="passwordField.type === 'text'"
+                                [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
+                        </button>
+                        <mat-error>
+                            Password is required
+                        </mat-error>
+                    </mat-form-field>
+    
+                    <div class="inline-flex items-end justify-between w-full mt-1.5">
+        
+                        <a (click)="forgetPassword = true"
+                            class="text-md font-medium text-primary-500 hover:underline"
+                                > Forget Password?
+                        </a>
+                    </div>
+                </form>
+           
+    
+                <div class="my-3 w-full flex justify-center">
+                    <button mat-raised-button color="primary" [disabled]="signInForm.disabled" (click)="signIn()">Sign In</button>
+                </div>
+    
+                <div class="w-full flex justify-center my-3">
+    
+                    <span class="mr-1">Don't have account ?</span>
+    
+                    <a
+                    class="text-md font-semibold text-primary-500 hover:underline"
+                    (click)="gotoURL('/sign-up')"> Sign Up
+                </a>
+    
+                </div>
+            </div>
+    
+        </ng-container>
+
+        <ng-container *ngIf="forgetPassword">
+
+            <div class="flex flex-col w-full">
+
+
+                <div class="mb-3">
+                    Fill the form to reset your password
+
+                </div>
+
+                <mat-form-field class="w-full">
+                    <mat-label>E-Mail</mat-label>
+                    <input matInput type="text" [(ngModel)]="forgettedEmail">
+                </mat-form-field>
+
+                <div class="w-full mt-3 flex justify-center">
+
+                    <button mat-raised-button color="primary" (click)="sendResetPassword()">Send Reset Link</button>
+                </div>
+
+
+            </div>
+
+        </ng-container>
+
+     
+
+    </div>
+
+</div>

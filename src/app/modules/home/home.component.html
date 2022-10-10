@@ -1,0 +1,105 @@
+<div class="my-4 w-full flex justify-center flex-auto">
+
+  <!-- <button (click)="test()">asdas</button>
+
+  <iframe id="test" width="100%" src="https://evrimagaci.org/ogrenme-ve-ogretimde-bilgiyi-anlatmak-ve-bilgiyi-insa-etmek-bir-konuyu-calisirken-kullandiginiz-teknik-ogrenme-etkinliginizi-etkiliyor-olabilir-mi-12479" frameborder="0"></iframe> -->
+
+
+
+  <div class="flex flex-col w-2/4  rounded mr-4  shadow-sm">
+    
+    <div class="mb-3 text-3xl font-semibold tracking-tight leading-8">
+      Latest News
+    </div>
+
+
+    <div  class="grid grid-cols-1  gap-6 w-full min-w-0 ng-star-inserted">
+
+
+      <ng-container *ngFor="let feed of allFeeds">
+
+        <div class="flex  justify-between items-center flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
+
+          <div class="flex flex-col w-full mr-3">
+            <div class=" font-bold text-xl" [innerHTML]="feed.title | safeHTML "></div>
+            <div class="text-gray-500 text-sm mt-1" [innerHTML]="feed.description  | safeHTML"></div>
+            <div class="flex w-full justify-end mt-1">
+              <button mat-flat-button color="accent" (click)="readMore(feed)">Read More</button>
+
+            </div>
+            <div class="flex w-full justify-start text-secondary ">
+              <div class="text-md font-medium ">Author:</div>
+              <div class="ml-1.5 text-md font-semibold">{{feed.author}}</div>
+            </div>
+            <div class="flex w-full max-h-full justify-start text-secondary ">
+              <div class="text-xs font-medium ">Source:</div>
+              <div class="ml-1.5 text-xs font-semibold max-w-xs">
+                <a [href]="feed.link">
+                  go to source
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col">
+
+            <div class="w-56">
+              <img [src]="feed.enclosure.link ?? 'assets/images/avatars/no-profile.png'" alt="">
+            </div>
+            <div>
+              <button mat-icon-button class="mr-2">
+                <mat-icon>
+                  thumb_up
+                </mat-icon>
+              </button>
+              <button mat-icon-button (click)="saveBookmark(feed)">
+                <mat-icon>
+                  bookmark_border
+                </mat-icon>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </ng-container>
+
+
+    </div>
+
+  </div>
+  <div class="flex flex-col w-1/4  rounded  justify-self-end ">
+    
+    <div class="mb-3 text-3xl font-semibold tracking-tight leading-8">
+      Most Populer News
+    </div>
+
+    
+
+      <ng-container *ngFor="let feed of mostRecentFeed">
+
+      <div class="flex flex-col w-full p-3 mb-3 bg-card rounded shadow-sm">
+
+        <div class="w-full">
+          <img [src]="feed.enclosure.link ?? 'assets/images/avatars/no-profile.png'" alt="">
+        </div>
+        <div>
+        
+          <div class="text-gray-500 text-sm mt-1" [innerHTML]="feed.description| safeHTML"></div>
+          <div class="flex w-full justify-end mt-1">
+            <button mat-flat-button color="accent">Read More</button>
+
+          </div>
+      
+        </div>
+
+      </div>
+
+
+      </ng-container>
+
+  </div>
+
+
+</div>

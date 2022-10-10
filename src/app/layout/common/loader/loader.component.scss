@@ -1,0 +1,40 @@
+$spinner-size: 4rem;
+$spinner-thickness: 0.5em;
+$animation-speed: 1s;
+$color-purple : #7408a6;
+$color-orange : #ff4800;
+
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #0000002b;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 9999999999999;
+}
+
+.spinner {
+  border-radius: 50%;
+  width: $spinner-size;
+  height: $spinner-size;
+  border: $spinner-thickness solid #e0e0e0;
+  border-top-color: $color-orange;
+  animation: $animation-speed infinite spin linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

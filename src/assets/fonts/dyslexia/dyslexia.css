@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'OpenDyslexic';
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: normal;
+    font-named-instance: 'Regular';
+    src: url("OpenDyslexic-Italic.otf") format("opentype");
+}
+
+@font-face {
+    font-family: 'OpenDyslexic';
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: italic;
+    font-named-instance: 'Italic';
+    src: url("OpenDyslexic-Italic.otf") format("opentype");
+}

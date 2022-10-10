@@ -1,0 +1,105 @@
+<div class="relative flex flex-0 items-center w-full h-16 sm:h-20 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
+  <ng-container *ngIf="!isScreenSmall">
+      <!-- Logo -->
+      <div class="flex items-center mx-2 lg:mr-8">
+          <div class="hidden lg:flex">
+              <img
+                  class="dark:hidden w-24"
+                  src="assets/images/logo/Spacegrid.png">
+              <img
+                  class="hidden dark:flex w-24"
+                  src="assets/images/logo/Spacegrid.png">
+          </div>
+          <img
+              class="flex lg:hidden w-8"
+              src="assets/images/logo/Spacegrid.png">
+      </div>
+      <!-- Horizontal navigation -->
+      <fuse-horizontal-navigation
+          class="mr-2"
+          [name]="'mainNavigation'"
+          [navigation]="navigation?.horizontal"></fuse-horizontal-navigation>
+  </ng-container>
+  <!-- Navigation toggle button -->
+  <ng-container *ngIf="isScreenSmall">
+      <button
+          mat-icon-button
+          (click)="toggleNavigation('mainNavigation')">
+          <mat-icon [svgIcon]="'heroicons_outline:menu'"></mat-icon>
+      </button>
+  </ng-container>
+  <!-- Components -->
+  <div class="flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2">
+      <!-- <languages></languages> -->
+      <!-- <fuse-fullscreen class="hidden md:block"></fuse-fullscreen> -->
+      <search [appearance]="'bar'"></search>
+      <shortcuts></shortcuts>
+      <!-- <messages></messages>
+      <notifications></notifications> -->
+      <!-- <button
+          class="lg:hidden"
+          mat-icon-button
+          (click)="quickChat.toggle()">
+          <mat-icon [svgIcon]="'heroicons_outline:chat-alt-2'"></mat-icon>
+      </button> -->
+      <user *ngIf="user"></user>
+      <button *ngIf="!user" mat-flat-button color="primary" (click)="login()">Sign in</button>
+  </div>
+</div>
+
+
+<!-- <div class="w-full relative print:hidden  flex  items-center h-30 bg-primary-400 px-30">
+
+  <div style="width: 142.1px" class=" mr-6">
+    <img  src="assets/images/logo/Spacegrid.png" alt="">
+  </div>
+
+
+
+  <ng-container *ngIf="!showSearchField">
+    <div class="flex  w-full text-white text-xl  items-center">
+
+      <div class="mr-4">
+        Home
+      </div>
+      <div class="mr-4">
+        About Us
+      </div>
+      <div>
+        İletişim
+      </div>
+  
+  
+    </div>
+  
+    </ng-container>
+
+ 
+  <div class="flex items-center ">
+
+    <search class="mr-3" [appearance]="'bar'"></search>
+
+    <button *ngIf="!user" mat-flat-button color="primary" (click)="login()">Sign In</button>
+
+    <div *ngIf="user">
+      <div class="relative w-22 h-22">
+     
+       
+          <mat-icon  [matMenuTriggerFor]="menu"
+          class="icon-size-22 cursor-pointer"
+          [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+  
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Profile</button>
+          <button mat-menu-item>Accessibility</button>
+          <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
+  
+    </div>
+    </div>
+
+
+  </div>
+
+
+</div> -->

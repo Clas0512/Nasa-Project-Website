@@ -1,0 +1,50 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+    "compileOnSave": false,
+    
+    "compilerOptions": {
+ 
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "./src",
+        "outDir": "./dist/out-tsc",
+        "sourceMap": true,
+        "declaration": false,
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "target": "es2017",
+        "module": "es2020",
+        "lib": [
+            "es2018",
+            "dom"
+        ],
+ 
+        "paths": {
+            "globalize": [
+                "../node_modules/globalize/dist/globalize"
+              ],
+              "globalize/*": [
+                "../node_modules/globalize/dist/globalize/*"
+              ],
+              "cldr": [
+                "../node_modules/cldrjs/dist/cldr"
+              ],
+              "cldr/*": [
+                "../node_modules/cldrjs/dist/cldr/*"
+              ],
+            "jszip": [
+                "../node_modules/jszip/dist/jszip.min.js"
+            ]
+         
+      
+        }
+    },
+    "angularCompilerOptions": {
+        "enableI18nLegacyMessageIdFormat": false,
+        "strictTemplates" : false
+        
+    },
+    
+
+}
